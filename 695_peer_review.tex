@@ -1,0 +1,89 @@
+%\documentstyle[11pt,a4]{article}
+%\documentclass[a4paper]{article}
+\documentclass[a4paper, 12pt]{article}
+% Seems like it does not support 9pt and less. Anyways I should stick to 10pt.
+%\documentclass[a4paper, 9pt]{article}
+\topmargin-2.0cm
+
+\usepackage{fancyhdr}
+\usepackage{pagecounting}
+\usepackage[dvips]{color}
+
+% Color Information from - http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/latex_advanced/node13.html
+
+% NEW COMMAND
+% marginsize{left}{right}{top}{bottom}:
+%\marginsize{3cm}{2cm}{1cm}{1cm}
+%\marginsize{0.85in}{0.85in}{0.625in}{0.625in}
+
+\advance\oddsidemargin-0.65in
+%\advance\evensidemargin-1.5cm
+\textheight9.2in
+\textwidth6.75in
+\newcommand\bb[1]{\mbox{\em #1}}
+\def\baselinestretch{1.5}
+%\pagestyle{empty}
+
+\newcommand{\hsp}{\hspace*{\parindent}}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+%\definecolor{gray}{rgb}{1.0,1.0,1.0}
+
+
+\begin{document}
+\thispagestyle{fancy}
+%\pagenumbering{gobble}
+%\fancyhead[location]{text} 
+% Leave Left and Right Header empty.
+\lhead{}
+\rhead{}
+%\rhead{\thepage}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+\rhead{\textcolor{gray}{\thepage/\totalpages{}}}
+%\vspace*{0.1cm}
+\begin{center}
+{\LARGE \bf Review}\\
+\vspace*{0.1cm}
+{\LARGE \bf Worldview and Route Planning using Live Public Cameras}\\
+\vspace*{0.1cm}
+
+{\bf Ahmed Mohamed and Ganesh Gingade and Wenyi Chen}\\
+
+\vspace*{0.1cm}
+{\normalsize Review from : Ashiwan Sivakumar (asivakum@purdue.edu)}
+
+\noindent$\bullet$ Overview:
+The project presents a system that provides live video feed from public cameras around the world.
+The system also provides the capability of choosing a route and view live video feed from cameras in the route.
+
+\noindent$\bullet$ Strengths:
+\begin{itemize}
+\item The system scope is really global and supports about 35000 cameras.
+\item It is interesting to support video feed along a route. 
+\item The application would be useful for planning travel etc.
+\item The paper has a good presentation especially the table showing the differences between related work is good.
+\end{itemize}
+
+\noindent$\bullet$ Weaknesses:
+\begin{itemize}
+\item The paper does not clearly articulate the challenges involved (esp. scalability, battery drainage, load balance etc.) to build the system. 
+\item I have questions regarding the scalability, power efficiency of the system.  
+\item There are many statements/claims in the paper without providing details on how the challenges are solved.
+For e.g. In introduction one of the key contributions is the system eliminates the need for any intermediate proxy servers there by improving scalability. This statement does not have any explanation as to why that is the case. If mobile devices have limited resources (processing), don't we need a proxy to transcode, resize the videos before transferring to the mobile phone? If this is not the case, then there should be some data to quantify that the system is scalable and how. 
+\item The system overview section states some challenges at the end of each paragraph, but does not explain how it is solved. 
+\end{itemize}
+
+\noindent$\bullet$ Comments to authors:
+\begin{itemize}
+\item Is the DB (mySQL or SQLServer?). If scalability and latency is a concern, you could suggest moving to key-value data stores like Cassandra for quick response.
+\item It would help if the system overview section explains more on how the challenges are solved by the system. 
+\item Many claims are statements without proofs/quantification.  For. e.g., in 3.2.3 Video/Image rendering last few statements talk about network fluctuation, camera heterogeneity, energy efficiency etc as challenges, but not clear how these are solved.
+\item Route planning is a nice feature to be added.
+\item It would benefit with more details on the camera communicator (that might explain more on why the system is scalable without a proxy server and some of the other challenges.)
+\item Evaluating against some of the state-of-the-art would make the paper stronger. 
+\end{itemize}
+\end{center}
+%\vspace*{0.2cm}
+
+\end{document}
+
